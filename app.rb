@@ -8,25 +8,21 @@ get('/game') do
 end
 
 get('/result') do
+  @player_1 = Pieces.new(params.fetch('player_1'))
+  @player_2 = Pieces.new(params.fetch('player_2'))
 
-  # if params.fetch('player_1').==('rock')
-    player_1 = Pieces.new(params.fetch('player_1'))
-  # elsif params.fetch('player_1').==('paper')
-    player_2 = Pieces.new(params.fetch('player_2'))
-# binding.pry    
-  # elsif params.fetch('player_1').==('scissors')
-    # scissors = Pieces.new(params.fetch('player_1'))
-  # end
-
-  # if params.fetch('player_2').==('rock')
-  #   rock = Pieces.new(params.fetch('player_2'))
-  # elsif params.fetch('player_2').==('paper')
-  #   paper = Pieces.new(params.fetch('player_2'))
-  # elsif params.fetch('player_2').==('scissors')
-  #   scissors = Pieces.new(params.fetch('player_2'))
-  # end
-
-  @result = player_1.beats?(player_2)
-# binding.pry
-  erb(:result)
+  types = ['rock', 'paper', 'scissors']
+   
+  if types.include?(@player_1.piece)
+    if types.include?(@player_2.piece)
+      @result = @player_1.beats?(@player_2)
+      erb(:result)
+    else
+      @result = 'invalid'
+      erb(:result)
+    end
+  else 
+    @result = 'invalid'
+    erb(:result)
+  end
 end

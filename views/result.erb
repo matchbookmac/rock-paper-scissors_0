@@ -1,11 +1,13 @@
 <h1>Who won?</h1>
 <% if @result.==(true) %>
-  <p>Player 1</p>
+  <p>Player 1 with <%= @player_1.piece %></p>
 <% elsif @result.==(false) %>
-  <p>Player 2</p>
+  <p>Player 2 with <%= @player_2.piece %></p>
 <% elsif @result.==('tie') %>
   <p>It was a tie</p>
-  <form action='/game'>
-    <button type='submit' class='btn'>Play Again</button>
-  </form>
+<% elsif @result.==('invalid') %>
+  <p>please choose "rock" "paper", or "scissors"</p>
 <% end %>
+<form action='/game'>
+  <button type='submit' class='btn'>Play Again</button>
+</form>

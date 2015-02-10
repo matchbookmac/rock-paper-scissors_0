@@ -49,6 +49,3 @@ class Pieces
   end
 end
 
-rock = Pieces.new('rock')
-paper = Pieces.new('paper')
-scissors = Pieces.new('scissors')

@@ -28,7 +28,7 @@ class Pieces
         -1
       elsif other.piece.==('paper')
         1        
-      end     
+      end
     end
   end
 
